@@ -1,0 +1,267 @@
+/* Genel Kapsayıcı (Home.css ile uyumlu koyu arka plan) */
+.kelimelerim-container {
+    padding: 20px 27px;
+    background-color: transparent;
+    /* Eğer Home componentinden renk geliyorsa transparan bırakabilirsin */
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+/* --- ÜST KISIM (Başlık ve Ekleme Butonu) --- */
+.kelimelerim-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.header-titles h1 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+.word-count {
+    font-size: 14px;
+    color: #6e7681;
+    /* Daha soluk bir gri */
+    display: block;
+    margin-top: 4px;
+}
+
+/* Kelime Ekle Butonu */
+.add-word-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #13a8f0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(19, 168, 240, 0.3);
+    transition: all 0.3s ease;
+}
+
+.add-word-btn:hover {
+    background-color: #0ea5e9;
+    box-shadow: 0 6px 24px rgba(19, 168, 240, 0.4);
+    transform: translateY(-1px);
+    /* Tıklanma hissiyatı için hafif yukarı kalkar */
+}
+
+.btn-icon {
+    font-size: 14px;
+}
+
+/* --- ALT KISIM (Arama Çubuğu) --- */
+.search-container {
+    width: 100%;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: #161b22;
+    /* Koyu gri arama kutusu arka planı */
+    border: 1px solid #30363d;
+    /* İnce, çok hafif belirgin sınır çizgisi */
+    border-radius: 12px;
+    padding: 10px 18px;
+    gap: 12px;
+    transition: border-color 0.3s ease;
+}
+
+/* Inputa tıklandığında (focus) arama çubuğunun kenarlığı hafif mavileşsin */
+.search-box:focus-within {
+    border-color: #13a8f0;
+}
+
+.search-icon {
+    color: #6e7681;
+    font-size: 16px;
+}
+
+.search-input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 15px;
+    width: 100%;
+    outline: none;
+}
+
+.search-input::placeholder {
+    color: #6e7681;
+}
+
+.words-container {
+    /* Izgara (Grid) sistemini aktifleştiriyoruz */
+    display: grid;
+
+    /* 
+      Bu satır sihirli kısımdır: 
+      Ekran genişliğine göre yan yana sığabildiği kadar kart koyar.
+      Görseldeki gibi geniş ekranlarda 3'lü, ekran küçüldükçe 2'li veya 1'li sıraya düşer.
+      350px kartların minimum genişliğidir.
+    */
+    grid-template-columns: repeat(auto-fit, minmax(400px, 472px));
+
+    /* Kartlar arasındaki yatay ve dikey boşluk */
+    gap: 24px;
+
+    /* Üstteki arama çubuğu veya başlık ile arasına boşluk bırakıyoruz */
+    margin-top: 32px;
+
+    /* Kaydırma çubuğunu ana kapsayıcının boşluğuna (en sağa) iter */
+    margin-right: -28px;
+}
+
+/* İsteğe Bağlı: Şık bir kaydırma çubuğu görünümü */
+.words-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.words-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.words-container::-webkit-scrollbar-thumb {
+    background-color: #30363d;
+    border-radius: 10px;
+}
+
+.words-container::-webkit-scrollbar-thumb:hover {
+    background-color: #6e7681;
+}
+
+/* --- MODAL TASARIMI --- */
+
+/* Arka planı karartan ve modalı ortalayan kapsayıcı */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Yarı saydam siyah zemin */
+    backdrop-filter: blur(4px);
+    /* Arkadaki içeriği hafif bulanıklaştırır */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Her şeyin üstünde görünmesini sağlar */
+}
+
+/* Modalın kendisi */
+.modal-content {
+    background-color: #161b22;
+    /* Görseldeki koyu lacivert/gri ton */
+    width: 100%;
+    max-width: 450px;
+    border-radius: 16px;
+    border: 1px solid #30363d;
+    /* Hafif bir dış çerçeve */
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+/* Modal Başlığı ve Kapatma Butonu */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.close-btn {
+    background: transparent;
+    border: none;
+    color: #8b949e;
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #ff5252;
+    /* Üzerine gelince kırmızı olsun */
+}
+
+/* Input Grupları (Etiket + Input) */
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6e7681;
+    /* Görseldeki gri etiket rengi */
+    letter-spacing: 0.5px;
+}
+
+.input-group input {
+    background-color: #0d1117;
+    /* Inputların koyu arka planı */
+    border: 1px solid #30363d;
+    color: white;
+    padding: 14px 16px;
+    border-radius: 12px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input::placeholder {
+    color: #6e7681;
+}
+
+/* Inputa tıklandığında çerçevesi mavi olsun */
+.input-group input:focus {
+    border-color: #13a8f0;
+}
+
+/* Kaydet Butonu */
+.save-modal-btn {
+    margin-top: 8px;
+    background-color: #13a8f0;
+    /* Açık Mavi */
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.save-modal-btn:hover {
+    background-color: #0ea5e9;
+}

@@ -1,0 +1,72 @@
+services:
+  
+  veritabani:
+
+    image: mysql:8.0
+
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD_ENV}
+      MYSQL_DATABASE: ${DB_NAME_ENV}
+
+    ports:
+      - "3307:3306"
+
+    networks:
+      - translate_net
+    
+    volumes:
+      - translate_data:/var/lib/mysql
+
+    healthcheck:
+      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${DB_PASSWORD_ENV}" ]
+      interval: 5s
+      timeout: 7s
+      retries: 10
+      start_period: 3s
+
+  
+  backend:
+
+    build: ./backend
+
+    environment:
+      - DB_HOST=veritabani
+      - SPRING_DATASOURCE_URL=jdbc:mysql://veritabani:3306/${DB_NAME_ENV}?useSSL=false&allowPublicKeyRetrieval=true
+      - DB_NAME=${DB_NAME_ENV}
+      - DB_USERNAME=${DB_USERNAME_ENV}
+      - DB_PASSWORD=${DB_PASSWORD_ENV}
+
+    ports:
+      - "8081:8080"
+
+    networks:
+      - translate_net
+
+    depends_on:
+      veritabani:
+        condition: service_healthy
+          
+
+  frontend:
+
+    build:
+      context: ./frontend
+      args:
+        - VITE_BASE_URL=${BASE_URL_ENV}
+
+    ports:
+      - "81:80"
+
+    networks:
+      - translate_net
+
+    depends_on:
+      - backend
+
+
+networks:
+  translate_net:
+    driver: bridge
+
+volumes:
+  translate_data:

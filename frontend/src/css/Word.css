@@ -1,0 +1,113 @@
+/* Ana Kart Kapsayıcısı */
+.word-card {
+    background-color: #0f151c;
+    /* Koyu lacivert/siyah arka plan */
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    /* İsteğe bağlı: karta hafif bir dış gölge verebilirsiniz */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    transition: all .2s ease;
+}
+
+.deleteIcon {
+    color: #ff5252;
+    cursor: pointer;
+    opacity: 0;
+    /* ilk basta icon gorunmez asagida tum card'in ustune gelince gorunur yapicaz */
+}
+
+.word-card:hover {
+    border: 1px solid #22d3ee;
+    transform: translateY(-3px);
+}
+
+/* !! word-card divinin ustune gelince( word-card:hover ) deleteIcon divine bu ayarlari yap dedik */
+.word-card:hover .deleteIcon {
+    opacity: 1;
+}
+
+/* Üst Başlık ve Etiket Alanı */
+.word-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.word-title {
+    font-size: 26px;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+}
+
+/* B2 vb. Seviye Etiketi */
+.word-level {
+    background-color: #292015;
+    /* Hafif kahverengi/turuncu zemin */
+    color: #f59e0b;
+    /* Turuncu metin */
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* Ortak Etiket Stili (ANLAMI, ÖRNEK CÜMLE yazıları için) */
+.section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Anlam Kutusu (Border'lı kısım) */
+.meaning-box {
+    background-color: #15222b;
+    /* İçerideki biraz daha açık lacivert zemin */
+    border: 1px solid #1f3d4c;
+    /* Görseldeki o ince mavi-yeşil kenarlık */
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.meaning-label {
+    color: #38bdf8;
+    /* Açık mavi etiket rengi */
+}
+
+.meaning-text {
+    margin: 0;
+    font-size: 16px;
+    color: #e2e8f0;
+    line-height: 1.5;
+}
+
+/* Örnek Cümle Alanı */
+.sentence-box {
+    padding: 0 4px;
+    /* Sol ve sağdan hafif boşluk, görseldeki gibi */
+}
+
+.sentence-label {
+    color: #64748b;
+    /* Gri etiket rengi */
+}
+
+.sentence-text {
+    margin: 0;
+    font-size: 16px;
+    color: #94a3b8;
+    /* Hafif sönük gri/mavi metin */
+    font-style: italic;
+    /* İtalik görünüm */
+    line-height: 1.5;
+}

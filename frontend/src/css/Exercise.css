@@ -1,0 +1,181 @@
+.main-exercise {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.exercise-card {
+    background-color: #161b22;
+    /* Koyu lacivert/siyah arka plan */
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    /* İsteğe bağlı: karta hafif bir dış gölge verebilirsiniz */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    transition: all .2s ease;
+    margin-top: 30px;
+    width: 500px;
+}
+
+.exercise-title {
+    text-align: center;
+    font-size: 35px;
+    font-weight: 800;
+    margin: 0;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+}
+
+.speakerIcon {
+    margin-right: 7px;
+    font-size: 14px;
+    color: #097686;
+}
+
+/* Kelime Ekle Butonu */
+.show-btn {
+    width: 500px;
+    margin-top: 15px;
+    text-align: center;
+    background-color: #13a8f0;
+    color: white;
+    border: none;
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 1px 10px rgba(19, 168, 240, 0.3);
+    transition: all 0.3s ease;
+}
+
+.repeat-btn {
+    width: 500px;
+    margin-top: 15px;
+    text-align: center;
+
+    background-color: #161b22;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+
+    color: white;
+
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+
+
+/* --- ANİMASYON TANIMI --- */
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+        /* Başlangıçta 20px aşağıda */
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        /* Kendi orijinal konumuna gelir */
+    }
+}
+
+/* --- ANLAM KUTUSU (Üstteki Mavi Temalı Kutu) --- */
+.exercise-MeanBox {
+    margin-top: 15px;
+    width: 430px;
+    background-color: #15222b;
+    /* Koyu lacivert/gri arka plan */
+    border: 1px solid #1f3d4c;
+    /* Mavi tonlu belirgin kenarlık */
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    /* Alttaki kutu ile arasındaki boşluk */
+
+    transition: all .3s ease;
+
+    /* Animasyon Ayarları */
+    opacity: 0;
+    /* Sayfa yüklendiğinde görünmez başlar */
+    animation: slideInUp 0.5s ease forwards;
+    /* 0.5 saniyede tamamlanır ve ekranda kalır (forwards) */
+}
+
+/* Anlam kutusunun içindeki etiket (ANLAMI) */
+.exercise-MeanBox .exercise-label {
+    color: #38bdf8;
+    /* Açık mavi */
+}
+
+.exercise-mean {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    /* Görseldeki gibi kalın (bold) yazı */
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* --- ÖRNEK CÜMLE KUTUSU (Alttaki Gri Temalı Kutu) --- */
+.exercise-SentenceBox {
+    width: 430px;
+    background-color: #161b22;
+    /* Biraz daha mat koyu gri arka plan */
+    border: 1px solid #30363d;
+    /* Soluk gri kenarlık */
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+
+    transition: all .3s ease;
+
+    /* Animasyon Ayarları */
+    opacity: 0;
+    /* Sayfa yüklendiğinde görünmez başlar */
+    animation: slideInUp 0.5s ease forwards;
+    animation-delay: 0.4s;
+    /* ÖNEMLİ: Anlam kutusundan 0.4 saniye sonra ekrana gelir */
+}
+
+/* Örnek cümle kutusunun içindeki etiket (ÖRNEK CÜMLE) */
+.exercise-SentenceBox .exercise-label {
+    color: #64748b;
+    /* Soluk gri */
+}
+
+.exercise-sentence {
+    color: #94a3b8;
+    /* Hafif maviye çalan soluk gri metin */
+    font-size: 16px;
+    font-style: italic;
+    /* İtalik görünüm */
+    margin: 0;
+    line-height: 1.5;
+}
+
+
+/* --- ORTAK ETİKET STİLİ (Her iki label için geçerli genel ayarlar) --- */
+.exercise-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    /* Harfler arası boşluk */
+    text-transform: uppercase;
+    /* Tüm harfleri büyük yapar */
+    display: block;
+    margin-bottom: 8px;
+    /* Altındaki metinle arasına boşluk bırakır */
+}

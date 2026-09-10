@@ -1,0 +1,94 @@
+/* Genel Kapsayıcı */
+.home-container {
+    min-height: 100vh;
+    background-color: #0d1117;
+    /* Görseldeki ana koyu arka plan */
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar Ayarları */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    background-color: #161b22;
+    border-bottom: 1px solid #21262d;
+    /* Alt tarafa ince bir çizgi */
+}
+
+/* Sol Taraf (Logo ve İsim) */
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    background-color: #0ea5e9;
+    /* WordUp ikonunun mavi arka planı */
+    color: white;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    font-size: 20px;
+}
+
+.brand-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+/* Sağ Taraf (Linklerin Kapsayıcısı) */
+.nav-links {
+    display: flex;
+    align-items: center;
+    background-color: #1c2128;
+    /* Butonları saran koyu gri zemin */
+    padding: 6px;
+    border-radius: 16px;
+    gap: 4px;
+}
+
+/* Standart Buton Görünümü */
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #8b949e;
+    /* Pasif sekme rengi */
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.btn-icon {
+    font-size: 18px;
+}
+
+/* Aktif (Seçili) Buton Görünümü */
+.nav-btn.active {
+    background-color: #13a8f0;
+    /* Açık mavi */
+    color: white;
+    /* Etrafındaki mavi parlama efekti */
+    box-shadow: 0 4px 20px rgba(19, 168, 240, 0.3);
+}
+
+/* Pasif Butonların Üzerine Gelince (Hover) */
+.nav-btn:not(.active):hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Outlet'in Render Edileceği Alan */
+.main-content {}
